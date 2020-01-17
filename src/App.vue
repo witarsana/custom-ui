@@ -20,7 +20,7 @@
             <a class="flex items-center text-gray-600" href="#">
               <img src="./assets/img/avatar2.jpg" class="w-6 h-6 rounded-full flex-none" alt="">
               <span class="text-xs px-1 py-1 font-medium mr-2">John Doe</span>
-              <button class="">
+              <button class="focus:outline-none">
                 <svg width="16" height="16" viewBox="0 0 24 24">
                   <path d="M7.41 7.84L12 12.42l4.59-4.58L18 9.25l-6 6-6-6z"></path>
                 </svg>
@@ -73,6 +73,7 @@
       <!-- User Message End Here -->
     </div>
     <!-- Tab Bar End Here -->
+    <!-- Menu Bar Start Here -->
     <div class="menu-bar bg-white-custom-2 text-gray-custom ">
       <ul class="flex items-center px-1 py-2 shadow-2xl">
         <li class="">
@@ -141,8 +142,112 @@
         </li>
       </ul>
     </div>
-    <div class="worksheet bg-gray-custom-2 flex-1 overflow-y-auto"></div>
-    <div class="footer bg-white-custom-2 h-10 text-center py-2 text-sm font-thin text-gray-custom">Copyright Koyo Royo 2019</div>
+    <!-- Menu Bar End Here -->
+    <div class="worksheet bg-gray-custom-2 flex-1 flex flex-col overflow-y-auto">
+      <div></div>
+      <div class="paper-work flex flex-col rounded bg-white px-2 py-2 mx-auto w-11/12 shadow-xl my-5">
+        <table class="table-auto text-sm w-full">
+          <thead>
+            <tr>
+              <th class="border px-4 py-2">Title</th>
+              <th class="border px-4 py-2">Author</th>
+              <th class="border px-4 py-2">Views</th>
+              <th class="border px-4 py-2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="border px-4 py-2">Intro to CSS</td>
+              <td class="border px-4 py-2">Adam</td>
+              <td class="border px-4 py-2">858</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td class="border px-4 py-2">Adam</td>
+              <td class="border px-4 py-2">112</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Into to JavaScript</td>
+              <td class="border px-4 py-2">Chris</td>
+              <td class="border px-4 py-2">1,280</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td class="border px-4 py-2">Adam</td>
+              <td class="border px-4 py-2">112</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Into to JavaScript</td>
+              <td class="border px-4 py-2">Chris</td>
+              <td class="border px-4 py-2">1,280</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td class="border px-4 py-2">Adam</td>
+              <td class="border px-4 py-2">112</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Into to JavaScript</td>
+              <td class="border px-4 py-2">Chris</td>
+              <td class="border px-4 py-2">1,280</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td class="border px-4 py-2">Adam</td>
+              <td class="border px-4 py-2">112</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Into to JavaScript</td>
+              <td class="border px-4 py-2">Chris</td>
+              <td class="border px-4 py-2">1,280</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td class="border px-4 py-2">Adam</td>
+              <td class="border px-4 py-2">112</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr>
+              <td class="border px-4 py-2">Into to JavaScript</td>
+              <td class="border px-4 py-2">Chris</td>
+              <td class="border px-4 py-2">1,280</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+            <tr class="bg-gray-100">
+              <td class="border px-4 py-2">A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+              <td class="border px-4 py-2">Adam</td>
+              <td class="border px-4 py-2">112</td>
+              <td class="border px-4 py-2"></td>
+            </tr>
+           
+          </tbody>
+        </table>
+        <div class="pagging mt-5 flex items-center justify-between">
+          <div class="paging-indicator">1-10 of 1000 entries</div>
+          <div class="paging-button flex">
+            <button>Prev</button>
+            <button>Back</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>Next</button>
+            <button>Last</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer bg-white-custom-2 h-10 text-center py-2 text-sm font-thin text-gray-custom">Copyright&copy; Koyo Royo 2020</div>
   </div>
 </template>
 
