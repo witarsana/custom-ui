@@ -26,14 +26,21 @@
       <!-- User End Here -->
       <!-- Tab Title Start-->
       <div class="tab-title flex-1 ml-3">
-        <ul class="flex items-center text-gray-custom text-xs font-bold ">
+        <ul class=" items-center text-gray-custom text-xs font-bold hidden md:flex xl:flex">
           <li class="px-3 py-1 hover:bg-gray-500 rounded-full"><a href="#">Dashboard</a></li>
           <li class="px-3 py-1 ml-2 text-white bg-blue-1000 rounded-full"><a href="#">Master Data</a></li>         
           <li class="px-3 py-1 ml-2 hover:bg-blue-1000 hover:text-white rounded-full"><a href="#">Manajemen RAB</a></li>
           <li class="px-3 py-1 ml-2 hover:bg-blue-1000 hover:text-white rounded-full"><a href="#">Laporan</a></li>
           <li class="px-3 py-1 ml-2 hover:bg-blue-1000 hover:text-white rounded-full"><a href="#">Pengaturan</a></li>
           <li class="px-3 py-1 ml-2 hover:bg-blue-1000 hover:text-white rounded-full"><a href="#">Help</a></li>
-          
+          <li class="ml-2 relative">
+            <input placeholder="Type something here..." type="text" class="outline-none  w-56 text-sm font-normal pl-2 pr-8 py-2 border border-gray-custom-2 h-8 rounded-full">
+            <span class="absolute" style="right:0; margin-right:10px;top:0; margin-top:5px;">
+              <svg class="fill-current" width="24" height="24" viewBox="0 0 24 24"><title>ic_search_24px</title>                 
+                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>                 
+              </svg>
+            </span>
+          </li>
         </ul>
       </div>
       <!-- Tab Title End Here-->
@@ -41,26 +48,176 @@
       <div class="message">
         <ul class="flex items-center text-gray-700">
           <li class="px-2">
-            <a href="#" class="hover:text-gray-900">
-              <svg width="24" height="24" viewBox="0 0 48 48"><title>ic_notifications_none_48px</title>
+            <a @click="notification()" href="#" title="notification" class="hover:text-gray-900 relative">
+              <svg width="24" height="24" viewBox="0 0 48 48">
                 <g fill="#618dfa">
                     <path fill="#618dfa" d="M24 44c2.21 0 4-1.79 4-4h-8c0 2.21 1.79 4 4 4zm12-12V22c0-6.15-3.27-11.28-9-12.64V8c0-1.66-1.34-3-3-3s-3 1.34-3 3v1.36c-5.73 1.36-9 6.49-9 12.64v10l-4 4v2h32v-2l-4-4zm-4 2H16V22c0-4.97 3.03-9 8-9s8 4.03 8 9v12z"></path>
                 </g>
               </svg>
+              <transition name="showhidden">
+                <div v-if="showNotification" class="notification z-10 absolute w-48" style="left:-100px">
+                  <div class="notification_pointer relative">
+                    <svg class="absolute fill-current  text-white" style="left:100px;" width="30" height="30" viewBox="0 0 292.362 292.362">
+                      <path d="M286.935 197.286L159.028 69.379c-3.613-3.617-7.895-5.424-12.847-5.424s-9.233 1.807-12.85 5.424L5.424 197.286C1.807 200.9 0 205.184 0 210.132s1.807 9.233 5.424 12.847c3.621 3.617 7.902 5.428 12.85 5.428h255.813c4.949 0 9.233-1.811 12.848-5.428 3.613-3.613 5.427-7.898 5.427-12.847s-1.814-9.232-5.427-12.846z"></path>
+                    </svg>
+                  </div>
+                  <div class="box-notification overflow-hidden h-72 shadow flex flex-col justify-between absolute w-full border-b border-gray-200 text-gray-custom bg-white" style="top:22px;">
+                    <div class="header-notication h-8 shadow  px-2 py-1 text-sm font-semibold w-full ">
+                      Notification
+                    </div>
+                    <div class="flex-1 content-notification overflow-y-auto">
+                      <ul class="px-2 py-2 ">
+                        <li class="text-gray-custom">
+                            <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                              <span>
+                                <img class="w-10 rounded-full" src="./assets/img/avatars/user1-128x128.jpg">
+                              </span>
+                              <span class="flex-1 flex flex-col ml-2 text-xxs">
+                                <span class=""><b>John Doe</b> and <b>You</b> celebrate 5th friend anniversary</span>
+                                <span class="text-sxs font-bold">3m</span>
+                              </span>
+                            </a>
+                          </li>
+                          <li class="text-gray-custom">
+                            <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                              <span>
+                                <img class="w-10 rounded-full" src="./assets/img/avatars/user3-128x128.jpg">
+                              </span>
+                              <span class="flex-1 flex flex-col ml-2 text-xxs">
+                                <span class=""><b>Jane Doe</b> and <b>You</b> were working together 5 years ago as Custom UI Team </span>
+                                <span class="text-sxs font-bold">3m</span>
+                              </span>
+                            </a>
+                          </li>
+                          <li class="text-gray-custom">
+                            <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                              <span>
+                                <img class="w-10 rounded-full" src="./assets/img/avatars/user5-128x128.jpg">
+                              </span>
+                              <span class="flex-1 flex flex-col ml-2 text-xxs">
+                                <span class=""><b>John Doe</b> and <b>You</b> celebrate 5th friend anniversary</span>
+                                <span class="text-sxs font-bold">3m</span>
+                              </span>
+                            </a>
+                          </li>
+                          <li class="text-gray-custom">
+                            <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                              <span>
+                                <img class="w-10 rounded-full" src="./assets/img/avatars/user6-128x128.jpg">
+                              </span>
+                              <span class="flex-1 flex flex-col ml-2 text-xxs">
+                                <span class=""><b>Jane Doe</b> and <b>You</b> were working together 5 years ago as Custom UI Team </span>
+                                <span class="text-sxs font-bold">3m</span>
+                              </span>
+                            </a>
+                          </li>
+                          <li class="text-gray-custom">
+                            <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                              <span>
+                                <img class="w-10 rounded-full" src="./assets/img/avatars/user7-128x128.jpg">
+                              </span>
+                              <span class="flex-1 flex flex-col ml-2 text-xxs">
+                                <span class=""><b>Jane Doe</b> and <b>You</b> were working together 5 years ago as Custom UI Team </span>
+                                <span class="text-sxs font-bold">3m</span>
+                              </span>
+                            </a>
+                          </li>
+                      </ul>
+                    </div>
+                    <a href="#" class="block h-8 py-1 hover:text-gray-75 text-sm more-notification shadow-inner text-center">See More</a>
+                  </div>
+                </div>
+              </transition>
+              
             </a>
           </li>
           <li class="px-2">
-            <a href="#" class="hover:text-gray-900">
-              <svg width="22" height="22" viewBox="0 0 24 24"><title>ic_message_24px</title>
+            <a @click="message()" href="#" class="hover:text-gray-900 relative">
+              <svg width="22" height="22" viewBox="0 0 24 24">
                   <g fill="#618dfa">
                       <path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path>
                   </g>
               </svg>
+              <transition name="showhidden">
+                <div v-if="showMessage" class="notification z-10 absolute w-48" style="left:-140px">
+                  <div class="notification_pointer relative">
+                    <svg class="absolute fill-current  text-white" style="left:140px;" width="30" height="30" viewBox="0 0 292.362 292.362">
+                      <path d="M286.935 197.286L159.028 69.379c-3.613-3.617-7.895-5.424-12.847-5.424s-9.233 1.807-12.85 5.424L5.424 197.286C1.807 200.9 0 205.184 0 210.132s1.807 9.233 5.424 12.847c3.621 3.617 7.902 5.428 12.85 5.428h255.813c4.949 0 9.233-1.811 12.848-5.428 3.613-3.613 5.427-7.898 5.427-12.847s-1.814-9.232-5.427-12.846z"></path>
+                    </svg>
+                  </div>
+                  <div class="box-notification overflow-hidden h-72 shadow flex flex-col justify-between absolute w-full border-b border-gray-200 text-gray-custom bg-white" style="top:22px;">
+                    <div class="header-notication h-8 shadow  px-2 py-1 text-sm font-semibold w-full ">
+                      Message
+                    </div>
+                    <div class="flex-1 content-notification overflow-y-auto">
+                      <ul class="px-2 py-2 ">
+                        <li class="text-gray-custom">
+                          <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="http://www.facebook.com">
+                            <span class="w-10">
+                              <img class="w-10 rounded-full" src="./assets/img/avatars/user1-128x128.jpg">
+                            </span>
+                            <span class="flex flex-col ml-2 text-xxs">
+                              <span class="flex justify-between items-center text-sm">
+                                <span class="font-semibold">Jane Doe</span>
+                                <span class="text-xxs">20/01/2020</span>
+                              </span>
+                              <p class="text-xs break-normal ">Hi could you help me something</p>
+                            </span>
+                          </a>
+                        </li>
+                        <li class="text-gray-custom">
+                          <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                            <span class="w-10">
+                              <img class="w-10 rounded-full" src="./assets/img/avatars/user3-128x128.jpg">
+                            </span>
+                            <span class="flex flex-col ml-2 text-xxs">
+                              <span class="flex justify-between items-center text-sm">
+                                <span class="font-semibold">Jane Doe</span>
+                                <span class="text-xxs">20/01/2020</span>
+                              </span>
+                              <p class="text-xs break-normal ">Hi could you help me something</p>
+                            </span>
+                          </a>
+                        </li>
+                        <li class="text-gray-custom">
+                          <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                            <span class="w-10">
+                              <img class="w-10 rounded-full" src="./assets/img/avatars/user4-128x128.jpg">
+                            </span>
+                            <span class="flex flex-col ml-2 text-xxs">
+                              <span class="flex justify-between items-center text-sm">
+                                <span class="font-semibold">Jane Doe</span>
+                                <span class="text-xxs">20/01/2020</span>
+                              </span>
+                              <p class="text-xs break-normal ">Hi could you help me something</p>
+                            </span>
+                          </a>
+                        </li>
+                        <li class="text-gray-custom">
+                          <a class="flex pb-1 border-b border-gray-300 justify-between items-center" href="#">
+                            <span class="w-10">
+                              <img class="w-10 rounded-full" src="./assets/img/avatars/user5-128x128.jpg">
+                            </span>
+                            <span class="flex flex-col ml-2 text-xxs">
+                              <span class="flex justify-between items-center text-sm">
+                                <span class="font-semibold">Jane Doe</span>
+                                <span class="text-xxs">20/01/2020</span>
+                              </span>
+                              <p class="text-xs break-normal ">Hi could you help me something</p>
+                            </span>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <a href="#" class="block h-8 py-1 hover:text-gray-75 text-sm more-notification shadow-inner text-center">See More</a>
+                  </div>
+                </div>
+              </transition>
             </a>
           </li>
           <li class="px-2">
             <a href="#" class="hover:text-gray-900">
-              <svg width="22" height="22" viewBox="0 0 24 24"><title>ic_settings_24px</title>
+              <svg width="22" height="22" viewBox="0 0 24 24">
                   <g fill="#618dfa">
                       <path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"></path>
                   </g>
@@ -73,8 +230,8 @@
     </div>
     <!-- Tab Bar End Here -->
     <!-- Menu Bar Start Here -->
-    <div class="menu-bar text-xs font-semibold bg-gray-50 text-gray-75 ">
-      <ul class="flex items-center px-1 py-2 border-b border-gray-400 shadow-2xl">
+    <div class="menu-bar text-xs font-semibold bg-gray-50 text-gray-75 hidden md:flex xl:flex">
+      <ul class="flex flex-1 items-center px-1 py-2 border-b border-gray-400 shadow-2xl">
         <li class="">
           <a href="#" class="flex hover:text-white hover:bg-blue-1000 rounded px-1 py-2 items-center flex-col">
             <span class="">
@@ -165,26 +322,26 @@
         <h1 class="uppercase font-bold text-lg text-blue-1000">Dashboard</h1>
         <span class="text-blue-1000 text-sm ">Home | Dashboard</span>
       </div>
-      <div class="paper-work flex  justify-between items-center mx-auto w-11-5/12 my-3">
-        <div class="card bg-blue-1000 px-4  flex flex-col py-2 flex-wrap w-3-5/12 h-40 text-white rounded shadow-2xl ">
+      <div class="paper-work flex flex-col md:flex-row xl:flex-row  justify-between items-center mx-auto w-11-5/12 my-3">
+        <div class="card bg-blue-1000 px-4  flex flex-col py-2 flex-wrap w-full md:w-3-5/12 xl:w-3-5/12 h-40 text-white rounded shadow-2xl mb-5 md:mb-0 xl:mb-0">
           <div class="crad-title text-base font-semibold">APBDES</div>
           <div class="flex justify-between items-center">
             <div class="caption flex-1">
-              <span class="block text-4xl">20,000 K</span>
+              <span class="block text-2xl md:text-2xl xl:text-4xl">20,000 K</span>
               <span class="block text-sm italic">Peningkatan 30% dari sebelumnya</span>
             </div>
             <div class="icon w-16">
-              <svg class="fill-current" width="60" height="60" viewBox="0 0 48 48"><title>ic_shopping_basket_48px</title>                 
+              <svg class="fill-current" width="60" height="60" viewBox="0 0 48 48">                 
                   <path d="M34.42 18L25.66 4.89c-.38-.58-1.02-.85-1.66-.85-.64 0-1.28.28-1.66.85L13.58 18H4c-1.1 0-2 .9-2 2 0 .19.03.37.07.54l5.07 18.54C7.61 40.76 9.16 42 11 42h26c1.84 0 3.39-1.24 3.85-2.93l5.07-18.54c.05-.16.08-.34.08-.53 0-1.1-.9-2-2-2h-9.58zM18 18l6-8.8 6 8.8H18zm6 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>                
               </svg>
             </div>
           </div>
         </div>
-        <div class="card bg-teal-500 px-4 flex flex-col py-2 flex-wrap w-3-5/12 h-40 text-white rounded shadow-2xl ">
+        <div class="card bg-teal-500 px-4 flex flex-col py-2 flex-wrap w-full md:w-3-5/12 xl:w-3-5/12 mb-5 md:mb-0 xl:mb-0 h-40 text-white rounded shadow-2xl ">
           <div class="crad-title text-base font-semibold">Dana Serapan</div>
           <div class="flex justify-between items-center">
             <div class="caption flex-1">
-              <span class="block text-4xl"><span class="font-bold">80</span> %</span>
+              <span class="block text-2xl md:text-2xl xl:text-4xl"><span class="font-bold">80</span> %</span>
               <span class="block text-sm italic">Peningkatan 10% dari sebelumnya</span>
             </div>
             <div class="icon w-16">
@@ -192,11 +349,11 @@
             </div>
           </div>
         </div>
-        <div class="card bg-orange-600 px-4 flex flex-col py-2 flex-wrap w-3-5/12 h-40 text-white rounded shadow-2xl ">
+        <div class="card bg-orange-600 px-4 flex flex-col py-2 flex-wrap w-full md:w-3-5/12 xl:w-3-5/12 h-40 text-white rounded shadow-2xl mb-5 md:mb-0 xl:mb-0">
           <div class="crad-title text-base font-semibold">Kegiatan</div>
           <div class="flex justify-between items-center">
             <div class="caption flex-1">
-              <span class="block text-4xl"><span class="font-bold">150</span> Kegiatan</span>
+              <span class="block text-2xl md:text-2xl xl:text-4xl"><span class="font-bold">150</span> Kegiatan</span>
               <span class="block text-sm italic">Peningkatan 10% dari sebelumnya</span>
             </div>
             <div class="icon w-16">
@@ -235,7 +392,28 @@ export default {
         series: [{
           data: [1,3,5,3,2,6,8,15,2,5,7] // sample data
         }]
-      }
+      },
+      showNotification : false,
+      showSetting: false,
+      showMessage : false,
+
+    }
+  },
+  methods : {
+    notification(){
+      this.showNotification = !this.showNotification;
+      this.showSetting = false;
+      this.showMessage = false;
+    },
+    message(){
+      this.showMessage = !this.showMessage;
+      this.showSetting = false;
+      this.showNotification = false;
+    },
+    setting(){
+      this.showSetting = !this.showSetting;
+      this.showNotification = false;
+      this.showMessage = false;
     }
   }
 }

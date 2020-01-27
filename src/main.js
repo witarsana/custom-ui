@@ -3,11 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import '@/assets/css/tailwind.css'
-import HighchartsVue from 'highcharts-vue'
 
 Vue.config.productionTip = false
-
-Vue.use(HighchartsVue)
 
 new Vue({
   router,

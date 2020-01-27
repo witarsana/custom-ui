@@ -155,6 +155,8 @@ module.exports = {
       '48': '12rem',
       '56': '14rem',
       '64': '16rem',
+      '72': '18rem',
+      '80': '20rem',
     },
     backgroundColor: theme => theme('colors'),
     backgroundPosition: {
@@ -260,6 +262,8 @@ module.exports = {
       ],
     },
     fontSize: {
+      sxs: '0.55rem',
+      xxs: '0.7rem',
       xs: '0.75rem',
       sm: '0.875rem',
       base: '1rem',
