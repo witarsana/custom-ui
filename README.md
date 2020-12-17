@@ -1,4 +1,6 @@
-# wps-ui
+# Custom UI
+
+Custom UI is admin template, inspired by WPS UI. This template build using VUE JS and tailwind css
 
 ## Project setup
 ```
