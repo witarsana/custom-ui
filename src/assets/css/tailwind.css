@@ -57,6 +57,13 @@ body{
         opacity: 1;
     }
 }
+.icon{
+    transition: transform ease-in-out .5s;
+}
+.card:hover .card-right .icon{
+    transform: scale(1.1);
+}
+
 
 
 

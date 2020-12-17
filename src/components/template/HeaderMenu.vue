@@ -66,8 +66,8 @@
       </div>
       <!-- User End Here -->
       <!-- Tab Title Start-->
-      <div class="tab-title flex-1 ml-3">
-        <ul class="items-center text-gray-custom text-xs font-bold hidden md:flex xl:flex">
+      <div class="tab-title w-64 md:w-full xl:w-full xl:flex-1 md:flex-1 ml-3 overflow-hidden">
+        <ul class="items-center text-gray-custom overflow-x-auto text-xs font-bold flex md:flex xl:flex">
           <li
             @click="selectTab('dashboard')"
             :class="selectedTab=='dashboard'?'text-white bg-blue-1000':''"
@@ -110,7 +110,7 @@
           >
             <a href="#">Help</a>
           </li>
-          <li class="ml-2 relative">
+          <li class="ml-2 relative hidden md:block xl:block">
             <input
               placeholder="Type something here..."
               type="text"
@@ -471,13 +471,13 @@
     </div>
     <!-- Tab Bar End Here -->
     <!-- Menu Bar Start Here -->
-    <div class="menu-bar text-xs font-semibold bg-gray-50 text-gray-75 hidden md:flex xl:flex">
+    <div class="menu-bar text-xs font-semibold bg-gray-50 text-gray-75  md:flex xl:flex">
       <ul class="flex flex-1 items-center h-20 px-1 py-2 border-b border-gray-400 shadow-2xl">
         <template v-if="selectedTab=='dashboard'">
-          <li class>
+          <li class="menu-wrap">
             <router-link
               :to="{ name: 'home' }"
-              class="flex hover:text-white hover:bg-blue-1000 rounded px-1 py-2 items-center flex-col"
+              class="flex menu-item rounded px-1 py-2 items-center flex-col"
             >
               <span class>
                 <svg class="fill-current" width="30" height="30" viewBox="0 0 48 48">
@@ -488,10 +488,10 @@
               <span class="text-xs">Home</span>
             </router-link>
           </li>
-          <li class>
+          <li class="menu-wrap">
             <router-link
               :to="{name:'dashboard2'}"
-              class="flex hover:text-white hover:bg-blue-1000 rounded px-1 py-2 items-center flex-col"
+              class="flex menu-item rounded px-1 py-2 items-center flex-col"
             >
               <span class>
                 <svg class="fill-current" width="30" height="30" viewBox="0 0 48 48">
@@ -522,10 +522,10 @@
             </router-link>
           </li>
           <li class="border-r h-16 w-2 border-gray-300"></li>
-          <li>
+          <li class="menu-wrap">
             <router-link
               :to="{name:'chart1'}"
-              class="flex hover:text-white hover:bg-blue-1000 rounded px-1 py-2 items-center flex-col"
+              class="flex menu-item rounded px-1 py-2 items-center flex-col"
             >
               <span>
                 <svg class="fill-current" width="30" height="30" viewBox="0 0 48 48">
@@ -536,14 +536,13 @@
               <span>Chart 1</span>
             </router-link>
           </li>
-          <li>
+          <li class="menu-wrap">
             <a
               href="#"
-              class="flex hover:text-white hover:bg-blue-1000 rounded px-1 py-2 items-center flex-col"
+              class="flex menu-item rounded px-1 py-2 items-center flex-col"
             >
               <span>
                 <svg class="fill-current" width="30" height="30" viewBox="0 0 48 48">
-                  <title>ic_insert_chart_48px</title>
                   <path
                     d="M38 6H10c-2.21 0-4 1.79-4 4v28c0 2.21 1.79 4 4 4h28c2.21 0 4-1.79 4-4V10c0-2.21-1.79-4-4-4zM18 34h-4V20h4v14zm8 0h-4V14h4v20zm8 0h-4v-8h4v8z"
                   />
@@ -607,10 +606,20 @@ export default {
     let counter = splitter.length;
     this.selectedMenu = splitter[counter - 1];
     this.selectedTab = splitter[counter - 2];
-    if (this.selectedMenu.length == 0) {
+    if (this.selectedMenu.length == 0 || this.selectedMenu =="#") {
       this.selectedTab = "dashboard";
       this.selectedMenu = "home";
     }
   }
 };
 </script>
+<style scoped>
+    .menu-wrap:hover .menu-item{
+        transform: scale(1.09);
+    }
+
+    .menu-item{
+        transition: transform ease-in-out .2s;
+    }
+
+</style>
